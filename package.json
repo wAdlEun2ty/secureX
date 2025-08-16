@@ -1,6 +1,6 @@
 {
   "name": "@wadleun2ty/securex",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simplify security in JavaScript — simple, fast, secure",
   "keywords": [
     "securex",
@@ -9,6 +9,7 @@
     "hashing",
     "javascript",
     "crypto",
+    "cryptography",
     "library",
     "secure",
     "data-protection"
@@ -32,13 +33,28 @@
   },
   "type": "module",
   "main": "dist/index.mjs",
+  "files": [
+    "dist",
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "LICENSE": "cp LICENSE dist/LICENSE",
-    "setup": "",
-    "doctor": "",
-    "build":"",
-    "dev":"",
-    "test":""
+    "publish:version": "bash .scripts/version.sh show",
+    "publish:patch": "bash .scripts/version.sh patch && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "publish:minor": "bash .scripts/version.sh minor && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "publish:major": "bash .scripts/version.sh major && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "clean": "rm -rf dist",
+    "build": "mkdir -p dist && cp lib/core/system/encrypt.mjs dist/index.mjs && npm run LICENSE",
+    "dev": "node --watch dist/index.mjs",
+    "test": "node --test test/**/*.test.mjs",
+    "lint": "eslint .",
+    "doctor": "npm doctor",
+    "setup": "npm install && npm run build",
+    "LICENSE": "cp LICENSE dist/LICENSE"
+  },
+  "engines": {
+    "node": ">=24.5.0"
   },
   "publishConfig": {
     "access": "public"
