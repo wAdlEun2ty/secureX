@@ -1,0 +1,46 @@
+{
+  "name": "@wadleun2ty/securex",
+  "version": "1.0.0",
+  "description": "Simplify security in JavaScript — simple, fast, secure",
+  "keywords": [
+    "securex",
+    "security",
+    "encryption",
+    "hashing",
+    "javascript",
+    "crypto",
+    "library",
+    "secure",
+    "data-protection"
+  ],
+  "homepage": "https://github.com/wAdlEun2ty/secureX#readme",
+  "bugs": {
+    "url": "https://github.com/wAdlEun2ty/secureX/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wAdlEun2ty/secureX.git"
+  },
+  "license": "GPL-3.0",
+  "author": {
+    "name": "wAdlEun2ty",
+    "url": "https://github.com/wAdlEun2ty"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wAdlEun2ty"
+  },
+  "type": "module",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "LICENSE": "cp LICENSE dist/LICENSE",
+    "setup": "",
+    "doctor": "",
+    "build":"",
+    "dev":"",
+    "test":""
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
