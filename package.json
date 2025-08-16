@@ -1,6 +1,6 @@
 {
   "name": "@wadleun2ty/securex",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simplify security in JavaScript — simple, fast, secure",
   "keywords": [
     "securex",
@@ -27,31 +27,20 @@
     "name": "wAdlEun2ty",
     "url": "https://github.com/wAdlEun2ty"
   },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/wAdlEun2ty"
-  },
   "type": "module",
   "main": "dist/index.mjs",
-  "files": [
-    "dist",
-    "lib",
-    "LICENSE",
-    "README.md"
-  ],
   "scripts": {
     "publish:version": "bash .scripts/version.sh show",
-    "publish:patch": "bash .scripts/version.sh patch && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
-    "publish:minor": "bash .scripts/version.sh minor && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
-    "publish:major": "bash .scripts/version.sh major && git add package.json && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "publish:patch": "bash .scripts/version.sh patch && git add . && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "publish:minor": "bash .scripts/version.sh minor && git add . && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
+    "publish:major": "bash .scripts/version.sh major && git add . && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push && npm publish",
     "clean": "rm -rf dist",
-    "build": "mkdir -p dist && cp lib/core/system/encrypt.mjs dist/index.mjs && npm run LICENSE",
+    "build": "mkdir -p dist && cp -r lib/core dist/ && cp LICENSE dist/LICENSE",
     "dev": "node --watch dist/index.mjs",
     "test": "node --test test/**/*.test.mjs",
     "lint": "eslint .",
     "doctor": "npm doctor",
-    "setup": "npm install && npm run build",
-    "LICENSE": "cp LICENSE dist/LICENSE"
+    "setup": "npm install && npm run build"
   },
   "engines": {
     "node": ">=24.5.0"
