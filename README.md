@@ -1,17 +1,37 @@
-# SecureX
+<div align="center">
+  <h1 style="font-size: 4rem; font-weight: 800; margin: 0;">
+    secureX
+  </h1>
+</div>
 
-<div style="text-align: center; margin: 20px 0;">
+<div align="center">
   <img 
     src="https://raw.githubusercontent.com/wAdlEun2ty/secureX/refs/heads/dev/docs/assets/img/logo.png" 
     alt="secureX logo" 
-    style="max-width: 220px; height: auto;"
+    width="220"
   />
-</div>
+</div>  
 
-**SecureX** is a JavaScript security library aiming to simplify encryption, hashing, key management, and other cryptography operations.  
+<p align="center">
+  <b>SecureX</b> — A modern JavaScript security toolkit for encryption, hashing, key management, and cryptography utilities.  
+</p>
 
-> [!NOTE]
-> ⚠️ **Work in Progress:** This project is still under active development. Many features may be incomplete, unstable, or contain errors. Use at your own risk.
+<p align="center">
+  <a href="https://github.com/wAdlEun2ty/secureX/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/wAdlEun2ty/secureX/ci.yml?branch=dev&logo=github&label=CI" alt="Build Status"/>
+  </a>
+  <a href="https://www.npmjs.com/package/securex">
+    <img src="https://img.shields.io/npm/v/securex?color=blue&logo=npm" alt="NPM Version"/>
+  </a>
+  <a href="https://github.com/wAdlEun2ty/secureX/blob/dev/LICENSE">
+    <img src="https://img.shields.io/github/license/wAdlEun2ty/secureX?color=brightgreen" alt="License"/>
+  </a>
+  <a href="https://github.com/wAdlEun2ty/secureX/stargazers">
+    <img src="https://img.shields.io/github/stars/wAdlEun2ty/secureX?style=social" alt="GitHub Stars"/>
+  </a>
+</p>
+
+---
 
 ## Project Status
 
