@@ -10,7 +10,7 @@
     alt="secureX logo" 
     width="220"
   />
-</div>  
+</div>
 
 <p align="center">
   <b>SecureX</b> — A modern JavaScript security toolkit for encryption, hashing, key management, and cryptography utilities.  
@@ -20,8 +20,8 @@
   <a href="https://github.com/wAdlEun2ty/secureX/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/wAdlEun2ty/secureX/ci.yml?branch=dev&logo=github&label=CI" alt="Build Status"/>
   </a>
-  <a href="https://www.npmjs.com/package/securex">
-    <img src="https://img.shields.io/npm/v/securex?color=blue&logo=npm" alt="NPM Version"/>
+  <a href="https://www.npmjs.com/package/@wadleun2ty/securex">
+   <img src="https://img.shields.io/npm/v/%40wadleun2ty%2Fsecurex?color=blue&logo=npm" alt="NPM Version"/>
   </a>
   <a href="https://github.com/wAdlEun2ty/secureX/blob/dev/LICENSE">
     <img src="https://img.shields.io/github/license/wAdlEun2ty/secureX?color=brightgreen" alt="License"/>
@@ -51,14 +51,14 @@ npm install @wadleun2ty/securex
 > Currently, usage examples are under construction. Please refer to the `/docs/pages` folder for partial guidance.
 
 ```javascript
-import { encrypt, decrypt } from '@wadleun2ty/securex';
+import { encrypt, decrypt } from "@wadleun2ty/securex";
 
 // Example usage coming soon...
 ```
 
 ## Contributing
 
-Contributions are welcome! If you want to help improve SecureX, please check the [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE\_OF\_CONDUCT.md](./CODE_OF_CONDUCT.md).
+Contributions are welcome! If you want to help improve SecureX, please check the [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
 ## License
 
