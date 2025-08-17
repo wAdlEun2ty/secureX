@@ -1,5 +1,13 @@
 # SecureX
 
+<div style="text-align: center; margin: 20px 0;">
+  <img 
+    src="https://raw.githubusercontent.com/wAdlEun2ty/secureX/refs/heads/dev/docs/assets/img/logo.png" 
+    alt="secureX logo" 
+    style="max-width: 220px; height: auto;"
+  />
+</div>
+
 **SecureX** is a JavaScript security library aiming to simplify encryption, hashing, key management, and other cryptography operations.  
 
 > [!NOTE]
