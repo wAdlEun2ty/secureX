@@ -2,6 +2,7 @@
 
 **SecureX** is a JavaScript security library aiming to simplify encryption, hashing, key management, and other cryptography operations.  
 
+> [!NOTE]
 > ⚠️ **Work in Progress:** This project is still under active development. Many features may be incomplete, unstable, or contain errors. Use at your own risk.
 
 ## Project Status

@@ -67,8 +67,7 @@ You agree not to use the Service to:
 ## 10. Contact
 If you have questions about these Terms, please contact us at:  
 **GitHub:** [https://github.com/wAdlEun2ty](https://github.com/wAdlEun2ty)  
-**Email:** [provide your email here]
-
+**Email:** [wAdlEun2ty@tuta.io](mailto:wAdlEun2ty@tuta.io)
 ---
 
 By using SecureX, you acknowledge that you have read, understood, and agree to these Terms of Service.

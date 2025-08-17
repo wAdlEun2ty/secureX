@@ -1,0 +1,76 @@
+# =====================================================
+# CODEOWNERS untuk project secureX
+# =====================================================
+# Format: <pattern>   <owner(s)>
+
+# =====================================================
+# Default (semua file)
+# =====================================================
+*   @org-admins @maintainers
+
+# =====================================================
+# DOCUMENTATION (docs/, README, policies, dll.)
+# =====================================================
+/docs/                  @docs-team
+/docs/assets/           @design-team
+/docs/pages/            @docs-team
+/docs/policy/           @legal-team @security-team
+/docs/resources/        @docs-team
+*.md                    @docs-team
+/README.md              @lead-dev @docs-team
+/CODE_OF_CONDUCT.md     @community-team
+/CONTRIBUTING.md        @community-team
+/GOVERNANCE.md          @legal-team
+/PRIVACY_POLICY.md      @legal-team
+/SECURITY.md            @security-team
+/SUPPORT.md             @community-team
+/TERMS_OF_SERVICE.md    @legal-team
+
+# =====================================================
+# Source Code (lib/ dan bin/)
+# =====================================================
+/bin/                   @backend-team
+/lib/                   @backend-team
+/lib/config/            @backend-team
+/lib/core/algorithm/    @crypto-team
+/lib/core/hash/         @crypto-team
+/lib/core/kdf/          @crypto-team
+/lib/core/keys/         @crypto-team
+/lib/core/output/       @crypto-team
+/lib/core/signature/    @crypto-team
+/lib/core/system/       @backend-team @crypto-team
+
+# =====================================================
+# Testing (test/)
+# =====================================================
+/test/                  @qa-team
+/test/config/           @qa-team
+/test/core/             @qa-team
+
+# =====================================================
+# DevOps / CI-CD / Infra
+# =====================================================
+/.github/               @devops-team
+/.github/workflows/     @ci-cd-team
+/package.json           @frontend-team
+/LICENSE                @legal-team
+
+# =====================================================
+# Design / Assets
+# =====================================================
+/docs/assets/css/       @design-team
+/docs/assets/js/        @frontend-team
+/docs/assets/img/       @design-team
+/docs/assets/icons/     @design-team
+
+# =====================================================
+# Security / Sensitive
+# =====================================================
+/secrets/               @security-team
+*.pem                   @security-team
+*.key                   @security-team
+.env                    @security-team
+
+# =====================================================
+# End of File
+# =====================================================
