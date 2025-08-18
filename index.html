@@ -1,206 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/wAdlEun2ty/secureX@dev/docs/assets/css/style.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureX</title>
-    <style>
-      body {
-        margin-left: 185px;
-        margin-right: 80px;
-        margin-bottom: 45px;
-        margin-top: 80px;
-      }
-      .secure-title {
-        color: #e3c09a;
-      }
-    </style>
-  </head>
-  <body>
-    <article class="markdown-body">
-      <div align="center">
-        <h1 id="securex" style="font-size: 4rem; font-weight: 800; margin: 0">
-          <a class="anchor" href="#securex" aria-hidden="true">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              width="20"
-              height="20"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-              ></path>
-            </svg>
-          </a>
-          <span class="secure-title">secure</span>X
-        </h1>
-      </div>
-
-      <div style="text-align: center; margin: 20px 0">
-        <img
-          src="https://raw.githubusercontent.com/wAdlEun2ty/secureX/refs/heads/dev/docs/assets/img/logo.png"
-          alt="secureX logo"
-          style="max-width: 420px; height: auto"
-        />
-      </div>
-      <p align="center">
-        <strong>SecureX</strong> — A modern JavaScript security toolkit for
-        encryption, hashing, key management, and cryptography utilities.
-      </p>
-      <p align="center">
-        <a href="https://github.com/wAdlEun2ty/secureX/actions">
-          <img
-            src="https://img.shields.io/github/actions/workflow/status/wAdlEun2ty/secureX/ci.yml?branch=dev&logo=github&label=CI"
-            alt="Build Status"
-          />
-        </a>
-        <a href="https://www.npmjs.com/package/securex">
-          <img
-            src="https://img.shields.io/npm/v/securex?color=blue&logo=npm"
-            alt="NPM Version"
-          />
-        </a>
-        <a href="https://github.com/wAdlEun2ty/secureX/blob/dev/LICENSE">
-          <img
-            src="https://img.shields.io/github/license/wAdlEun2ty/secureX?color=brightgreen"
-            alt="License"
-          />
-        </a>
-        <a href="https://github.com/wAdlEun2ty/secureX/stargazers">
-          <img
-            src="https://img.shields.io/github/stars/wAdlEun2ty/secureX?style=social"
-            alt="GitHub Stars"
-          />
-        </a>
-      </p>
-
-      <hr />
-
-      <div class="markdown-alert markdown-alert-note">
-        <p class="markdown-alert-title">⚠️ Work in Progress</p>
-        <p>
-          <strong>This project is still under active development.</strong>
-          Many features may be incomplete, unstable, or contain errors. Use at
-          your own risk.
-        </p>
-      </div>
-
-      <h2 id="project-status">
-        <a class="anchor" href="#project-status" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            width="16"
-            height="16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-            ></path>
-          </svg>
-        </a>
-        Project Status
-      </h2>
-      <ul>
-        <li>The library structure is mostly in place.</li>
-        <li>Documentation and examples are partially completed.</li>
-        <li>Some modules may not function correctly yet.</li>
-        <li>The project requires improvements, testing, and refactoring.</li>
-      </ul>
-
-      <h2 id="installation">
-        <a class="anchor" href="#installation" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            width="16"
-            height="16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-            ></path>
-          </svg>
-        </a>
-        Installation
-      </h2>
-      <pre><code class="lang-bash">npm install @wadleun2ty/securex</code></pre>
-
-      <h2 id="usage">
-        <a class="anchor" href="#usage" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            width="16"
-            height="16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-            ></path>
-          </svg>
-        </a>
-        Usage
-      </h2>
-
-      <div class="markdown-alert markdown-alert-tip">
-        <p class="markdown-alert-title">ℹ️ Information</p>
-        <p>
-          Currently, usage examples are under construction. Please refer to the
-          <code>/docs/pages</code> folder for partial guidance.
-        </p>
-      </div>
-
-      <pre><code class="lang-javascript">import { encrypt, decrypt } from '@wadleun2ty/securex';
-
-// Example usage coming soon...</code></pre>
-
-      <h2 id="contributing">
-        <a class="anchor" href="#contributing" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            width="16"
-            height="16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-            ></path>
-          </svg>
-        </a>
-        Contributing
-      </h2>
-      <p>
-        Contributions are welcome! If you want to help improve SecureX, please
-        check the <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> and
-        <a href="./CODE_OF_CONDUCT.md">CODE_OF_CONDUCT.md</a>.
-      </p>
-
-      <h2 id="license">
-        <a class="anchor" href="#license" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            width="16"
-            height="16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-            ></path>
-          </svg>
-        </a>
-        License
-      </h2>
-      <p>
-        SecureX is licensed under the <a href="./LICENSE">GPL-3.0</a> License.
-      </p>
-    </article>
-  </body>
+    <link rel="shortcut icon" href="./docs/assets/icons/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+    <link rel="stylesheet" href="./docs/assets/css/homepage.css">
+</head>
+<body>
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+        <div class="container">
+            <i class="fas fa-exclamation-triangle"></i> WARNING: SecureX is under heavy development - not ready for production use!
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span>SecureX</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Documentation</a>
+                    <a href="#" class="nav-link">API</a>
+                    <a href="#" class="nav-link">GitHub</a>
+                    <a href="#" class="btn btn-outline">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badges">
+                    <div class="badge badge-warning">
+                        <i class="fas fa-hard-hat"></i> Under Active Development
+                    </div>
+                </div>
+                
+                <h1 class="hero-title">Next Generation Security for <span>Modern Applications</span></h1>
+                <p class="hero-subtitle">SecureX is a comprehensive JavaScript security toolkit currently in development, designed to provide robust encryption, hashing, and security utilities.</p>
+                
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-book"></i> Read Documentation
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-graphic">
+                <div class="hero-graphic-overlay"></div>
+                <div class="hero-graphic-content">
+                    <div class="code-block" style="width: 80%;">
+                        <div class="code-header">
+                            <span>securex.mjs</span>
+                            <button class="code-copy">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-comment">// SecureX is currently in development</span><br>
+                            <span class="code-comment">// This code is a preview of the future API</span><br><br>
+                            
+                            <span class="code-keyword">import</span> { encrypt, decrypt } <span class="code-keyword">from</span> <span class="code-string">"@wadleun2ty/securex"</span>;<br><br>
+                            
+                            <span class="code-keyword">const</span> <span class="code-param">masterKey</span> = <span class="code-keyword">await</span> <span class="code-function">generateMasterKey</span>();<br>
+                            <span class="code-keyword">const</span> <span class="code-param">encrypted</span> = <span class="code-keyword">await</span> <span class="code-function">encrypt</span>({<br>
+                            &nbsp;&nbsp;<span class="code-param">data</span>: <span class="code-string">"Sensitive information"</span>,<br>
+                            &nbsp;&nbsp;<span class="code-param">key</span>: <span class="code-param">masterKey</span>,<br>
+                            &nbsp;&nbsp;<span class="code-param">algorithm</span>: <span class="code-string">"aes-256-gcm"</span><br>
+                            });<br><br>
+                            
+                            <span class="code-keyword">const</span> <span class="code-param">decrypted</span> = <span class="code-keyword">await</span> <span class="code-function">decrypt</span>({<br>
+                            &nbsp;&nbsp;<span class="code-param">data</span>: <span class="code-param">encrypted</span>,<br>
+                            &nbsp;&nbsp;<span class="code-param">key</span>: <span class="code-param">masterKey</span><br>
+                            });<br><br>
+                            
+                            <span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-param">decrypted</span>); <span class="code-comment">// Output: "Sensitive information"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Status Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Project Development Status</h2>
+            <p class="section-subtitle">SecureX is currently in the early stages of development. Here's what's been completed and what's still in progress.</p>
+            
+            <div class="grid grid-cols-4">
+                <!-- Core Structure -->
+                <div class="status-card">
+                    <div class="status-icon completed">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="status-title">Core Structure</h3>
+                    <p class="status-description">Basic project scaffolding and module organization</p>
+                    <div class="status-progress">
+                        <div class="status-progress-bar completed"></div>
+                    </div>
+                    <div class="status-label">Completed</div>
+                </div>
+                
+                <!-- Documentation -->
+                <div class="status-card">
+                    <div class="status-icon in-progress">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="status-title">Documentation</h3>
+                    <p class="status-description">Initial documentation structure with placeholders</p>
+                    <div class="status-progress">
+                        <div class="status-progress-bar in-progress"></div>
+                    </div>
+                    <div class="status-label">40% Complete</div>
+                </div>
+                
+                <!-- Encryption Modules -->
+                <div class="status-card">
+                    <div class="status-icon not-started">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="status-title">Encryption Modules</h3>
+                    <p class="status-description">AES, ChaCha20, RSA, and ECC implementations</p>
+                    <div class="status-progress">
+                        <div class="status-progress-bar not-started"></div>
+                    </div>
+                    <div class="status-label">Not Started</div>
+                </div>
+                
+                <!-- Hashing Algorithms -->
+                <div class="status-card">
+                    <div class="status-icon not-started">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h3 class="status-title">Hashing Algorithms</h3>
+                    <p class="status-description">SHA256, SHA512, MD5, and BLAKE2 implementations</p>
+                    <div class="status-progress">
+                        <div class="status-progress-bar not-started"></div>
+                    </div>
+                    <div class="status-label">Not Started</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section" style="background-color: var(--gray-lighter);">
+        <div class="container">
+            <h2 class="section-title">Planned Features</h2>
+            <p class="section-subtitle">What SecureX will offer once development is complete</p>
+            
+            <div class="grid grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Military-Grade Encryption</h3>
+                    <p class="feature-description">AES-256, ChaCha20, RSA, and ECC implementations with secure key management and initialization vectors.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Hashing</h3>
+                    <p class="feature-description">SHA-2, SHA-3, BLAKE2, and Argon2 for password hashing with customizable work factors.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="feature-title">Key Management</h3>
+                    <p class="feature-description">Secure generation, storage, and rotation of cryptographic keys with hardware security module support.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="feature-title">Authentication</h3>
+                    <p class="feature-description">HMAC signatures, Ed25519, and secure session management with token-based authentication.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Optimized</h3>
+                    <p class="feature-description">WebAssembly acceleration for cryptographic operations with minimal performance overhead.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Security Audited</h3>
+                    <p class="feature-description">Regular third-party security audits and vulnerability assessments with responsible disclosure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Installation Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Get Started with SecureX</h2>
+            <p class="section-subtitle">Install the alpha version to explore the project structure (not functional yet)</p>
+            
+            <div class="grid grid-cols-2">
+                <div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Terminal</span>
+                            <button class="code-copy">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-comment"># Install SecureX alpha version</span><br>
+                            <span class="code-function">npm</span> install @wadleun2ty/securex<br><br>
+                            
+                            <span class="code-comment"># Import modules in your project</span><br>
+                            <span class="code-keyword">import</span> { encrypt } <span class="code-keyword">from</span> <span class="code-string">'@wadleun2ty/securex'</span>;<br>
+                            <span class="code-keyword">import</span> { generateKey } <span class="code-keyword">from</span> <span class="code-string">'@wadleun2ty/securex/keys'</span>;<br><br>
+                            
+                            <span class="code-comment">// Note: Functionality not implemented yet</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--warning-light); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--warning);">
+                        <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--warning);">
+                            <i class="fas fa-exclamation-triangle"></i> Important Notice
+                        </h3>
+                        <p style="color: var(--dark);">The current published package only contains the project structure and placeholder modules. No cryptographic functionality is implemented at this stage.</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <div style="background: white; border-radius: var(--border-radius); padding: 2rem; height: 100%; box-shadow: var(--shadow);">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--darker);">Project Structure</h3>
+                        
+                        <div style="background: var(--gray-lighter); border-radius: var(--border-radius); padding: 1.5rem; font-family: 'Fira Code', monospace; font-size: 0.875rem; line-height: 2;">
+                            secureX/<br>
+                            ├── bin/<br>
+                            ├── docs/<br>
+                            │&nbsp;&nbsp;├── assets/<br>
+                            │&nbsp;&nbsp;├── pages/<br>
+                            │&nbsp;&nbsp;└── ...<br>
+                            ├── lib/<br>
+                            │&nbsp;&nbsp;├── config/<br>
+                            │&nbsp;&nbsp;├── core/<br>
+                            │&nbsp;&nbsp;│&nbsp;&nbsp;├── algorithm/<br>
+                            │&nbsp;&nbsp;│&nbsp;&nbsp;├── hash/<br>
+                            │&nbsp;&nbsp;│&nbsp;&nbsp;└── ...<br>
+                            │&nbsp;&nbsp;└── ...<br>
+                            ├── test/<br>
+                            ├── package.json<br>
+                            └── ...<br>
+                        </div>
+                        
+                        <p style="margin-top: 1.5rem; color: var(--gray);">The project follows a modular structure with separation of concerns. Each cryptographic function will have its own module with corresponding tests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta">
+                <div class="cta-overlay"></div>
+                <div class="cta-content">
+                    <h2 class="cta-title">Contribute to SecureX Development</h2>
+                    <p class="cta-subtitle">Join us in building the next generation of JavaScript security tools</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-light">
+                            <i class="fas fa-code-branch"></i> Contribute on GitHub
+                        </a>
+                        <a href="#" class="btn" style="background: rgba(255, 255, 255, 0.2); color: white;">
+                            <i class="fas fa-book"></i> Read Contribution Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        SecureX
+                    </a>
+                    <p class="footer-about">
+                        SecureX is an open-source JavaScript security toolkit currently in development. 
+                        Our mission is to provide robust, easy-to-use cryptographic functions for modern applications.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Documentation</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Getting Started</a>
+                        <a href="#" class="footer-link">API Reference</a>
+                        <a href="#" class="footer-link">Guides</a>
+                        <a href="#" class="footer-link">Examples</a>
+                        <a href="#" class="footer-link">Best Practices</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">GitHub Repository</a>
+                        <a href="#" class="footer-link">Issue Tracker</a>
+                        <a href="#" class="footer-link">Releases</a>
+                        <a href="#" class="footer-link">Security</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">License</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="#" class="footer-link">Code of Conduct</a>
+                        <a href="#" class="footer-link">Security Policy</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 SecureX Project. This project is licensed under GPL-3.0.
+                </div>
+                <div class="footer-nav">
+                    <a href="#" class="footer-link">Status</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./docs/assets/js/script.js"></script>
+</body>
 </html>

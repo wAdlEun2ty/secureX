@@ -13,7 +13,7 @@
 </div>
 
 <p align="center">
-  <b>SecureX</b> — A modern JavaScript security toolkit for encryption, hashing, key management, and cryptography utilities.  
+  <b>SecureX</b> — A JavaScript security project currently under **initial development**.  
 </p>
 
 <p align="center">
@@ -35,12 +35,17 @@
 
 ## Project Status
 
-- The library structure is mostly in place.
-- Documentation and examples are partially completed.
-- Some modules may not function correctly yet.
-- The project requires improvements, testing, and refactoring.
+> [!CAUTION]
+> **Under Construction** — This project is still in the very early stages. Most code is not yet implemented, and the current structure serves as a foundation.
+
+- Only the basic project structure is set up.
+- Documentation and examples are minimal or placeholders.
+- Modules and utilities are mostly **not functional** yet.
+- Significant development, testing, and refactoring are required.
 
 ## Installation
+
+> Not fully functional yet; installation is for testing structure only.
 
 ```bash
 npm install @wadleun2ty/securex
@@ -48,17 +53,18 @@ npm install @wadleun2ty/securex
 
 ## Usage
 
-> Currently, usage examples are under construction. Please refer to the `/docs/pages` folder for partial guidance.
+> Usage examples are not available. All code is still under construction.
 
 ```javascript
 import { encrypt, decrypt } from "@wadleun2ty/securex";
 
-// Example usage coming soon...
+// No working examples yet
 ```
 
 ## Contributing
 
-Contributions are welcome! If you want to help improve SecureX, please check the [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+If you want to contribute and help shape the project, feel free to check the [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE\_OF\_CONDUCT.md](./CODE_OF_CONDUCT.md).
+**Warning:** Code is incomplete and under heavy development.
 
 ## License
 

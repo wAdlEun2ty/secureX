@@ -1,0 +1,224 @@
+ Anda adalah kriptografer dan engineer library. Tulis **SATU FILE** JavaScript ES Module bernama **`chacha20.mjs`** yang mengimplementasikan:
+
+ * **ChaCha20** stream cipher (20 rounds, 10 double-round),
+ * Varian **IETF ChaCha20** (nonce 96-bit, counter 32-bit),
+ * **AEAD ChaCha20-Poly1305** (RFC 8439),
+ * util konversi & RNG,
+ * **selfTest()** yang meluluskan **Known Answer Tests (KAT)** dari **RFC 8439**.
+
+ Tanpa dependensi eksternal. Kode production-ready, jelas, dan konsisten.
+
+---
+
+## Batasan & Gaya Kode
+
+* **ES Module murni**: `export` named; **jangan** CommonJS.
+* Semua data biner pakai **`Uint8Array`**.
+* **Tidak** memakai library pihak ketiga.
+* Komentar ringkas hanya pada API & bagian krusial.
+* Validasi argumen: **throw `Error`** dengan pesan singkat & tegas.
+
+---
+
+## Yang Harus Diimplementasikan (Wajib)
+
+### 1) Inti ChaCha20
+
+* State 16 word (32-bit little-endian): konstanta `"expand 32-byte k"`, 8 word key (32 byte), 1 word counter, 3 word nonce (IETF) **atau** 2 word counter, 2 word nonce untuk varian 64-bit nonce klasik (lihat API).
+* Fungsi:
+
+  * `quarterRound(a,b,c,d)`
+  * `chacha20Block(key, counter, nonce)` → 64-byte keystream block.
+  * `xorKeystream(key, nonce, counter, data)` → `Uint8Array` (encrypt/decrypt identik).
+* **Rounds**: 20 (10 column + 10 diagonal). Tambahkan helper untuk rotasi kiri 32-bit.
+* Endian: **little-endian** untuk baca/tulis word.
+
+### 2) Varian Nonce & Mode Stream
+
+* **IETF ChaCha20 (RFC 8439)**: nonce **12 byte** (`Uint8Array(12)`), counter **32-bit** (mulai `0` atau `1`, parameter).
+* **ChaCha20 klasik**: nonce **8 byte** (`Uint8Array(8)`), counter **64-bit** (hi\:lo 32-bit). Implementasikan sebagai API terpisah.
+
+### 3) Poly1305 & AEAD ChaCha20-Poly1305
+
+* Implementasi **Poly1305** murni (no deps):
+
+  * `poly1305Tag(key: Uint8Array(32), msg: Uint8Array): Uint8Array(16)`
+    (clamp `r`, modul `2^130-5`, proses 16-byte block dgn 1-bit padding).
+* **AEAD ChaCha20-Poly1305** (RFC 8439 §2.8):
+
+  * Kunci MAC: `one-time key` = ChaCha20 keystream block ke-0 (counter=0) pada nonce yang sama; ambil 32 byte pertama → `(r,s)`.
+  * **Encrypt**:
+
+    * Keystream data mulai **counter=1**.
+    * Ciphertext = `P ⊕ keystream`.
+    * Tag = Poly1305 over: `AAD || pad16 || C || pad16 || len(AAD) (64-bit LE) || len(C) (64-bit LE)`.
+  * **Decrypt**:
+
+    * Hitung ulang tag dan **konstanta** waktu perbandingannya → bila beda, **throw**.
+* API harus menerima **AAD opsional** (`Uint8Array` atau `null`).
+
+### 4) Util & RNG
+
+* Konversi:
+
+  * `hexToBytes(hex: string): Uint8Array`
+  * `bytesToHex(u8: Uint8Array): string`
+* RNG:
+
+  * `randomBytes(len: number): Uint8Array`
+    Gunakan `globalThis.crypto.getRandomValues`. Jika tidak ada (Node lama), fallback otomatis ke `require('node:crypto').webcrypto`.
+
+### 5) Validasi & Error Handling
+
+* **Key** ChaCha20: 32-byte.
+* **Nonce**:
+
+  * IETF: 12-byte, **counter 32-bit** (0…0xFFFFFFFF).
+  * Klasik: 8-byte, **counter 64-bit** (Naik, throw jika overflow).
+* Data boleh kosong; kembalikan buffer kosong yang valid.
+* AEAD: AAD boleh kosong; verifikasi tag konstan waktu.
+
+---
+
+## API Publik yang Diekspor
+
+```ts
+// —— Inti & stream ——
+export function chacha20Block(key: Uint8Array, counter: number, nonce: Uint8Array): Uint8Array; // 64 bytes
+export function chacha20XorIETF(
+  key: Uint8Array, nonce12: Uint8Array, data: Uint8Array, counterStart?: number
+): Uint8Array; // encrypt/decrypt (counterStart default 1 untuk AEAD compatibility)
+export function chacha20XorClassic(
+  key: Uint8Array, nonce8: Uint8Array, data: Uint8Array, counterLo?: number, counterHi?: number
+): Uint8Array; // 64-bit counter (lo, hi), default lo=0, hi=0
+
+// —— Poly1305 —— 
+export function poly1305Tag(oneTimeKey32: Uint8Array, msg: Uint8Array): Uint8Array; // 16 bytes
+
+// —— AEAD ChaCha20-Poly1305 (IETF, nonce 12B) ——
+export function aeadChaCha20Poly1305Encrypt(
+  key: Uint8Array, nonce12: Uint8Array, plaintext: Uint8Array, aad?: Uint8Array
+): { ciphertext: Uint8Array, tag: Uint8Array };
+
+export function aeadChaCha20Poly1305Decrypt(
+  key: Uint8Array, nonce12: Uint8Array, ciphertext: Uint8Array, tag: Uint8Array, aad?: Uint8Array
+): Uint8Array; // throws on tag mismatch
+
+// —— Util —— 
+export function hexToBytes(hex: string): Uint8Array;
+export function bytesToHex(u8: Uint8Array): string;
+export function randomBytes(len: number): Uint8Array;
+
+// —— Test —— 
+export function selfTest(): true;
+```
+
+---
+
+## KAT (Known Answer Tests) — **Wajib Lulus** (RFC 8439)
+
+Implementasikan `selfTest()` yang me-`throw` bila ada mismatch dan me-return `true` bila semua lulus. Gunakan **nilai tepat** berikut:
+
+1. **ChaCha20 Block Function** (RFC 8439, §2.3.2)
+
+```
+key   = 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+nonce = 000000090000004a00000000   // 12-byte IETF
+ctr   = 1
+block0 (64B) = 
+10f1e7e4d13b5915500fdd1fa32071c4
+c7d1f4c733c068030422aa9ac3d46c4e
+d2826446079faa0914c2d705d98b02a2
+b5129cd1de164eb9cbd083e8a2503c4e
+```
+
+2. **ChaCha20 Encrypt (IETF)** (RFC 8439, §2.4.2) — “Ladies and Gentlemen…”
+
+```
+key   = 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+nonce = 000000000000004a00000000
+ctr   = 1
+plaintext =
+4c616469657320616e642047656e746c656d656e206f662074686520636c617373206f66
+20273939277320436861726c6573742066616e74617379206e6f76656c2c207769746820
+736f6d65206465736572742e
+ciphertext =
+6e2e359a2568f98041ba0728dd0d6981
+e97e7aec1d4360c20a27afccfd9fae0b
+f91b65c5524733ab8f593dabcd62b357
+1639d624e65152ab8f530c359f0861d8
+07ca0dbf500d6a6156a38e088a22b65e
+52bc514d16ccf806818ce91ab7793736
+5af90bbf74a35be6b40b8eedf2785e42
+874d
+```
+
+3. **AEAD ChaCha20-Poly1305** (RFC 8439, §2.8.2)
+
+```
+key   = 1c9240a5eb55d38af333888604f6b5f0
+        473917c1402b80099dca5cbc207075c0
+nonce = 000000000102030405060708
+aad   = f33388860000000000004e91
+pt    = 496e7465726e65742d4472616674732061726520647261667420646f63756d656e74732076616c696420666f722061206d6178696d756d206f6620736978206d6f6e74687320616e64206d617920626520757064617465642c207265706c616365642c206f72206f62736f6c65746564206279206f7468657220646f63756d656e747320617420616e792074696d652e20497420697320696e617070726f70726961746520746f207573652074686520496e7465726e65742d4472616674732061732061207265666572656e636520776974686f7574206d6f64696669636174696f6e20696e20616e79207761792e
+ct    = 64a0861575861af460f062c79be643bd
+        5e805cfd345cf389f108670ac76c8cb2
+        4c6cfc18755d43eea09ee94e382d26b0
+        bdb7b73c321b0100d4f03b7f355894cf
+        332f830e710b97ce98c8a84abd0b9481
+        14ad176e008d33bd60f982b1ff37c855
+        9797a06ef4f0ef61c186324e2b350638
+        3606907b6a7c02b0f9f6157b53c867e4
+ tag  = eead9d67890cbb22392336fea1851f38
+```
+
+ `selfTest()` harus memverifikasi ketiga vektor di atas secara **persis** (heks deserialisasi → panggil fungsi → hasil `bytesToHex` harus sama). Gagal satu pun → **throw Error** dengan pesan yang jelas.
+
+---
+
+## Catatan Implementasi (Wajib diikuti)
+
+* **Counter overflow**:
+
+  * IETF (32-bit): jika `counterStart + ⌈len/64⌉  2^32`, **throw** overflow.
+  * Klasik (64-bit): naikkan `lo` lalu `hi`; overflow 64-bit → **throw**.
+* **Perbandingan tag** harus **konstan waktu** (hindari early-exit).
+* Hindari alokasi berulang: gunakan buffer block 64B yang di-reuse saat streaming.
+* Jangan tambahkan XChaCha20 di versi ini (1 modul fokus). Boleh cantumkan komentar “future work”.
+* Tambahkan komentar singkat bahwa ChaCha20 **tanpa AEAD** tidak memberi autentikasi/integritas.
+* buat dalam bahasa inggrsi formal tanpa komntra dna jangan banyak penjelsan di code 
+---
+
+## Contoh Pemakaian (taruh di komentar file)
+
+```js
+import {
+  hexToBytes, bytesToHex, randomBytes,
+  chacha20XorIETF, aeadChaCha20Poly1305Encrypt, aeadChaCha20Poly1305Decrypt,
+  selfTest
+} from './chacha20.mjs';
+
+selfTest(); // throws jika gagal
+
+const key   = randomBytes(32);
+const nonce = randomBytes(12);
+const msg   = new TextEncoder().encode('hello chacha');
+
+const ct = chacha20XorIETF(key, nonce, msg, 1);
+const pt = chacha20XorIETF(key, nonce, ct, 1);
+console.log(new TextDecoder().decode(pt)); // 'hello chacha'
+
+// AEAD
+const aad = new TextEncoder().encode('meta');
+const { ciphertext, tag } = aeadChaCha20Poly1305Encrypt(key, nonce, msg, aad);
+const dec = aeadChaCha20Poly1305Decrypt(key, nonce, ciphertext, tag, aad);
+console.log(new TextDecoder().decode(dec)); // 'hello chacha'
+```
+
+---
+
+## Output yang Saya Harapkan
+
+* **Satu blok kode**: isi lengkap **`chacha20.mjs`** sesuai spesifikasi.
+* Tidak perlu penjelasan panjang di luar komentar singkat dalam file.
+* Pastikan `selfTest()` **return `true`** (semua KAT lulus). Jika ada mismatch, **perbaiki** hingga lulus.
